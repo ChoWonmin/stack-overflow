@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="parent1" data-attribute="parent">
+  <div id="child2" data-attribute="child">
+    <div id="grandchild4" data-attribute="child">
+    </div>
+  </div>
+</div>
+<div id="parent2" data-attribute="parent">
+  <div id="child3" data-attribute="child">
+    <div id="grandchild1" data-attribute="parent">
+      <div id="item1"></div>
+    </div>
+  </div>
+  <div id="child4" data-attribute="parent">
+    <div id="grandchild2" data-attribute="child">
+      <div id="grandchild3" data-attribute="parent">
+        <div id="item2" data-attribute="child">
+          <div id="sub1" data-attribute="child">
+            sub1
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById("sub1").addEventListener("click", function(){
+  
+  let ancester = this.parentElement;
+  let flag = ancester.getAttribute("data-attribute");
+
+  while(flag!=="parent") {
+    ancester = ancester.parentElement;
+    flag = ancester.getAttribute("data-attribute");
+  }
+
+  console.log(ancester);
+});
+</script>
+
+</body>
+</html>
